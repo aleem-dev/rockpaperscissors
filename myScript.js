@@ -1,3 +1,4 @@
+// at some point start writing unit test as well
 // this url helps to get user input from console
 // next step is to write a function getting inputs from users
 // then call the result function for result
