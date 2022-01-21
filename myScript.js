@@ -1,3 +1,7 @@
+// this url helps to get user input from console
+// next step is to write a function getting inputs from users
+// then call the result function for result
+// then ask user if another round?
 //document.write('hello world in html');
 //let player1Choice = 'rock';
 //let player1Choice = 'paper';
