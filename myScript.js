@@ -14,6 +14,8 @@
 
 console.log('lets play rock paper scissors');
 game();
+
+//**game function runs the round for 5 times */
 function game(){
     let player1score = 0; 
     let player2score = 0;
@@ -23,16 +25,16 @@ function game(){
         console.log(`round ${index+1} result: ${roundResult}`);
         console.log('=========================');
         console.log('\n');
-        let scoreBoard = sb(roundResult)
-        player1score = scoreBoard[0];
-        player2score = scoreBoard[1];
+        let score = scoreBoard(roundResult)
+        player1score += score[0];
+        player2score += score[1];
     }
+    console.log(`player 1 score: ${player1score}, player 2 score: ${player2score}`);
     (player1score==player2score)?console.log('The game is draw'):(player1score>player2score)?console.log('Player 1 wins the game'):console.log('Player 2 wins the game');        
 
     
 
 }
-
 
 //**playRound function play round of game and declare a result*/
 function playRound(){
@@ -123,10 +125,10 @@ function getResult(p1Choice, p2Choice) {
     }
 }
 
-//**Scoreboard */
-function sb(rResult){
-    let p1Score = 0;
-    let p2Score = 0;
+//**Scoreboard method update the playres score for each match and returns the array */
+function scoreBoard(rResult){
+    let p1score = 0;
+    let p2score = 0;
     switch (rResult) {
         case 'Player 1 wins':
             p1score += 1;
@@ -135,11 +137,11 @@ function sb(rResult){
             p2score +=1;
             break;
         case 'It is a draw':
-            player1score += 1;
-            player2score += 1;
+            p1score += 0.5;
+            p2score += 0.5;
             break;
         default:
             break;
     }
-    return [p1Score, p2Score];
+    return [p1score, p2score];
 }
