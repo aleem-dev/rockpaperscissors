@@ -1,5 +1,5 @@
 // at some point start writing unit test as well - https://www.freecodecamp.org/news/how-to-start-unit-testing-javascript/
-// this url helps to get user input from console
+// this url helps to get user input from console - https://sebhastian.com/javascript-console-input/
 // next step is to write a function getting inputs from users
 // then call the result function for result
 // then ask user if another round?
