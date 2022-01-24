@@ -56,6 +56,13 @@ function computerPlay() {
 
 //**player1Play() is getting player1 input from command line */
 function player1Play() {
+    let userInput;
+    // do {
+    //     userInput = parseInt(prompt('Please type 1 for Rock, 2 for Scissors and 3 for Paper'));
+    //     let compare = (userInput>0) || (userInput<4)
+    //     console.log(compare);
+    // } while ((compare));
+    // return convertChoice(userInput);
     return convertChoice(parseInt(prompt('Please type 1 for Rock, 2 for Scissors and 3 for Paper')));
 
     // const readline = require("readline");
