@@ -1,17 +1,3 @@
-// ** 3 Your game is going to play against the computer, so begin with a function called computerPlay that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this // function in the game to make the computer’s play. Tip: use the console to make sure this is returning the expected output before moving to the next step!
-//console.log("let computer select its choice");
-//let computerPlay = () => Math.floor(Math.random()*3)+1;  //this is usefull but when I call it before declaration it does not work
-//let computerChoice = computerPlay();
-//let player2Selection = convertChoice(computerChoice); // player2Choice variable is used to hold computer choice
-//let player2Selection = computerPlay();
-//console.log('computer has choosen: ' + player2Selection);
-//let userChoice = window.prompt('Please 1 for Rock, 2 for Scissors and 3 for Paper');
-//let player1Choice = 3;
-// let player1Selection = convertChoice(player1Choice);
-// console.log('player1 has choosen: ' + player1Selection);
-// let result = playRound(player1Selection,player2Selection);
-// console.log('round result: '+ result);
-
 console.log('lets play rock paper scissors');
 game();
 
@@ -39,8 +25,6 @@ function game(){
 //**playRound function play round of game and declare a result*/
 function playRound(){
     let player2Selection = computerPlay();
-    //let player1Choice = 3;
-    //let player1Selection = convertChoice(player1Choice);
     let player1Selection = player1Play()
     console.log('player1 has choosen: ' + player1Selection);
     console.log('computer has choosen: ' + player2Selection);
@@ -51,33 +35,12 @@ function playRound(){
 // ** function to make computer do its choice number between 1 to 3
 function computerPlay() {
     return convertChoice(Math.floor(Math.random()*3)+1);
-    //return Math.floor(Math.random()*3)+1;
 }
 
 //**player1Play() is getting player1 input from command line */
 function player1Play() {
     let userInput;
-    // do {
-    //     userInput = parseInt(prompt('Please type 1 for Rock, 2 for Scissors and 3 for Paper'));
-    //     let compare = (userInput>0) || (userInput<4)
-    //     console.log(compare);
-    // } while ((compare));
-    // return convertChoice(userInput);
-    return convertChoice(parseInt(prompt('Please type 1 for Rock, 2 for Scissors and 3 for Paper')));
-
-    // const readline = require("readline");
-    // const rl = readline.createInterface({
-    //     input: process.stdin,
-    //     output: process.stdout,
-    // });
-
-    // rl.question("Please type 1 for Rock, 2 for Scissors and 3 for Paper",
-    //             function (answer) {
-    //                 console.log(`Player 1 input number: ${answer}`);
-    //                 console.log(convertChoice(answer));
-    //             }
-    //     );
-
+        return convertChoice(parseInt(prompt('Please type 1 for Rock, 2 for Scissors and 3 for Paper')));
 }
 
 //make a helper function that converts number to string 1 for Rock, 2 for Scissors and 3 for Paper
@@ -99,7 +62,6 @@ function convertChoice (Choice) {
 }
 
 //** funtion to check results */
-//checkresult(player1Choice, player2Choice);
 function getResult(p1Choice, p2Choice) {
     switch (p1Choice) {
         case 'rock':
