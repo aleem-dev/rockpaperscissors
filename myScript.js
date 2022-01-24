@@ -39,10 +39,11 @@ function game(){
 //**playRound function play round of game and declare a result*/
 function playRound(){
     let player2Selection = computerPlay();
-    console.log('computer has choosen: ' + player2Selection);
-    let player1Choice = 3;
-    let player1Selection = convertChoice(player1Choice);
+    //let player1Choice = 3;
+    //let player1Selection = convertChoice(player1Choice);
+    let player1Selection = player1Play()
     console.log('player1 has choosen: ' + player1Selection);
+    console.log('computer has choosen: ' + player2Selection);
     let result = getResult(player1Selection,player2Selection);
     return result;
 }
@@ -51,6 +52,25 @@ function playRound(){
 function computerPlay() {
     return convertChoice(Math.floor(Math.random()*3)+1);
     //return Math.floor(Math.random()*3)+1;
+}
+
+//**player1Play() is getting player1 input from command line */
+function player1Play() {
+    return convertChoice(parseInt(prompt('Please type 1 for Rock, 2 for Scissors and 3 for Paper')));
+
+    // const readline = require("readline");
+    // const rl = readline.createInterface({
+    //     input: process.stdin,
+    //     output: process.stdout,
+    // });
+
+    // rl.question("Please type 1 for Rock, 2 for Scissors and 3 for Paper",
+    //             function (answer) {
+    //                 console.log(`Player 1 input number: ${answer}`);
+    //                 console.log(convertChoice(answer));
+    //             }
+    //     );
+
 }
 
 //make a helper function that converts number to string 1 for Rock, 2 for Scissors and 3 for Paper
