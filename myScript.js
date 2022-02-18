@@ -135,7 +135,7 @@ function game(btnValue){
         //roundResultP.innerHTML += '\n round number: '+ (index+1);
         let roundResult = playRound(btnValue);
         console.log(`round ${index+1} result: ${roundResult}`);
-        buff += `<p>round ${index+1} result: ${roundResult}</p>`;
+        buff += `<p>Round ${index+1} result: ${roundResult}</p>`;
         roundResultP.innerHTML += `${roundResult}`;
         console.log('==');
         //buff += '\n';
@@ -189,7 +189,7 @@ function playGame(btnValue){
         //scoreBoard roundResult
         console.log('game over');
         console.log(`player 1 score: ${player1score}, player 2 score: ${player2score}`)+ '\n';
-        buff += `\n player 1 score: ${player1score}, player 2 score: ${player2score}`;
+        buff += `\n Player 1 score: ${player1score}, Player 2 score: ${player2score}`;
         //(player1score==player2score)?console.log('The game is draw'):(player1score>player2score)?console.log('Player 1 wins the game'):console.log('Player 2 wins the game');        
         (player1score==player2score)?buff+='<p>The game is draw</p>':(player1score>player2score)?buff+='<p>Player 1 wins the game</p>':buff+='<p>Player 2 wins the game</p>';
         board.innerHTML = buff;
