@@ -113,11 +113,14 @@ function playRound(btnValue){
     let player2Selection = computerPlay();
     let player1Selection = player1Play(btnValue);
     console.log('player1 has choosen: ' + player1Selection);
-userChoice.textContent = player1Selection;
-console.log('computer has choosen: ' + player2Selection);
-computerChoice.textContent = player2Selection;
-let result = getResult(player1Selection,player2Selection);
-return result;
+    //userChoice.innerHTML = "<img src=\'./img/rock.png\'>";
+    //console.log(userChoice.innerHTML);
+    userChoice.textContent = player1Selection;
+    console.log('computer has choosen: ' + player2Selection);
+    //computerChoice.innerHTML = "<img src=\'./img/rock.png\'>";
+    computerChoice.textContent = player2Selection;
+    let result = getResult(player1Selection,player2Selection);
+    return result;
 }
 
 
