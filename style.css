@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-flow: column wrap;
+    border: red dotted 1px;
+}
+.userInput, .choices, .scoreBoard{
+    border: purple dotted 1px;
+}
+.userInput, .scoreBoard{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-flow: column wrap;
+}
+.choices{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.userChoice, .computerChoice, h2, .inputButtons, .board{
+    border: green dotted 1px;
+}

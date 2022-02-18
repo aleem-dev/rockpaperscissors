@@ -4,9 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="myScript.js" defer></script>
 </head>
 <body>
-    <script src="myScript.js"></script>
+<div class='container'><H1>Rock Paper Scissor</H1>
+    <h3>Round <span class='roundNum'></span></h3>
+    <div class='userInput'>
+        <h2>User Input: Press any button</h2>
+        <div class='inputButtons'>
+            <button id='rock' value='1'>Rock</button>
+            <button id='paper' value='2'>Paper</button>
+            <button id='scissors' value='3'>Scissor</button>
+        </div>
+    </div>
+    <div class='choices'>
+        <div class="user">
+            <h2>Player1 : User Choice</h2>
+            <div class='userChoice'></div>
+        </div>
+        <div class="computer">
+            <h2>Player2 : Computer Choice</h2>
+            <div class='computerChoice'></div>
+        </div>
+    </div>
+    <div class='scoreBoard'>
+        <h2>Round <span class='roundNum'></span> Result</h2>
+        <p class='roundResult'></p>
+        <h2>Score Board</h2>
+        <p class='board'></p>
+    </div>
+</div>
 </body>
 </html>

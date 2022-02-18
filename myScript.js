@@ -1,119 +1,3 @@
-console.log('lets play rock paper scissors');
-game();
-
-//**game function runs the round for 5 times */
-function game(){
-    let player1score = 0; 
-    let player2score = 0;
-    for(let index=0; index<5; index++){
-        console.log('round number: '+ (index+1));
-        let roundResult = playRound();
-        console.log(`round ${index+1} result: ${roundResult}`);
-        console.log('=========================');
-        console.log('\n');
-        let score = scoreBoard(roundResult)
-        player1score += score[0];
-        player2score += score[1];
-    }
-    console.log(`player 1 score: ${player1score}, player 2 score: ${player2score}`);
-    (player1score==player2score)?console.log('The game is draw'):(player1score>player2score)?console.log('Player 1 wins the game'):console.log('Player 2 wins the game');        
-
-    
-
-}
-
-//**playRound function play round of game and declare a result*/
-function playRound(){
-    let player2Selection = computerPlay();
-    let player1Selection = player1Play()
-    console.log('player1 has choosen: ' + player1Selection);
-    console.log('computer has choosen: ' + player2Selection);
-    let result = getResult(player1Selection,player2Selection);
-    return result;
-}
-
-// ** function to make computer do its choice number between 1 to 3
-function computerPlay() {
-    return convertChoice(Math.floor(Math.random()*3)+1);
-}
-
-//**player1Play() is getting player1 input from command line */
-function player1Play() {
-    let userInput;
-        return convertChoice(parseInt(prompt('Please type 1 for Rock, 2 for Scissors and 3 for Paper')));
-}
-
-//make a helper function that converts number to string 1 for Rock, 2 for Scissors and 3 for Paper
-function convertChoice (Choice) {
-    switch (Choice) {
-        case 1:
-            return 'rock';
-            break;
-        case 2:
-            return 'paper'
-            break;
-        case 3:
-            return 'scissors';
-            break;
-        default:
-            break;
-    }
-    
-}
-
-//** funtion to check results */
-function getResult(p1Choice, p2Choice) {
-    switch (p1Choice) {
-        case 'rock':
-            switch (p2Choice) {
-                case 'rock':
-                    return 'It is a draw';
-                    break;
-                case 'paper':
-                    return 'Player 2 wins!';
-                    break;
-                case 'scissors':
-                    return 'Player 1 wins';
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case 'paper':
-            switch (p2Choice) {
-                case 'rock':
-                    return 'Player 1 wins';
-                    break;
-                case 'paper':
-                    return 'It is a draw';
-                    break;
-                case 'scissors':
-                    return 'Player 2 wins!';
-                    break;
-                default:
-                    break;
-            }
-            break;
-        case 'scissors':
-            switch (p2Choice) {
-                case 'rock':
-                    return 'Player 2 wins!';
-                    break;
-                case 'paper':
-                    return 'Player 1 wins';
-                    break;
-                case 'scissors':
-                    return 'It is a draw';
-                    break;
-                default:
-                    break;
-            }
-            break;
-        default:
-            break;
-    }
-}
-
 //**Scoreboard method update the playres score for each match and returns the array */
 function scoreBoard(rResult){
     let p1score = 0;
@@ -131,6 +15,179 @@ function scoreBoard(rResult){
             break;
         default:
             break;
-    }
+        }
     return [p1score, p2score];
 }
+
+
+
+
+
+//** funtion to check results */
+function getResult(p1Choice, p2Choice) {
+    switch (p1Choice) {
+        case 'rock':
+        switch (p2Choice) {
+            case 'rock':
+                return 'It is a draw';
+                break;
+            case 'paper':
+                return 'Player 2 wins!';
+                break;
+            case 'scissors':
+                return 'Player 1 wins';
+                break;
+            default:
+                break;
+            }
+        break;
+        case 'paper':
+        switch (p2Choice) {
+            case 'rock':
+                return 'Player 1 wins';
+                break;
+            case 'paper':
+                return 'It is a draw';
+                break;
+            case 'scissors':
+                return 'Player 2 wins!';
+                break;
+            default:
+                break;
+            }
+        break;
+        case 'scissors':
+        switch (p2Choice) {
+            case 'rock':
+                return 'Player 2 wins!';
+                break;
+            case 'paper':
+                return 'Player 1 wins';
+                break;
+            case 'scissors':
+                return 'It is a draw';
+                break;
+            default:
+            break;
+            }
+        break;
+        default:
+        break;
+    }
+}
+                                
+//make a helper function that converts number to string 1 for Rock, 2 for Scissors and 3 for Paper
+function convertChoice (Choice) {
+    switch (Choice) {
+        case 1:
+            return 'rock';
+            break;
+        case 2:
+            return 'paper'
+            break;
+        case 3:
+            return 'scissors';
+            break;
+        default:
+            break;
+    }
+
+}
+
+//**player1Play() is getting player1 input from command line */
+function player1Play(btnValue) {
+    //return convertChoice(parseInt(prompt('Please type 1 for Rock, 2 for Scissors and 3 for Paper')));
+    //return convertChoice(parseInt('1'));
+    return convertChoice(parseInt(btnValue));
+}
+
+// ** function to make computer do its choice number between 1 to 3
+function computerPlay() {
+    return convertChoice(Math.floor(Math.random()*3)+1);
+}
+
+//**playRound function play round of game and declare a result*/
+function playRound(btnValue){
+    const userChoice = document.querySelector('.userChoice');
+    const computerChoice = document.querySelector('.computerChoice');
+    let player2Selection = computerPlay();
+    let player1Selection = player1Play(btnValue);
+    console.log('player1 has choosen: ' + player1Selection);
+userChoice.textContent = player1Selection;
+console.log('computer has choosen: ' + player2Selection);
+computerChoice.textContent = player2Selection;
+let result = getResult(player1Selection,player2Selection);
+return result;
+}
+
+
+//**game function runs the round for 5 times */
+function game(btnValue){
+    const roundResultP= document.querySelector('.roundResult');
+    roundResultP.innerHTML = '';
+    //let buff='';
+    // let player1score = 0; 
+    // let player2score = 0;
+    let index=roundCount-1;
+    // for(let index=0; index<1; index++){
+        console.log('round number: '+ (index+1));
+        buff += '\n round number: '+ (index+1);
+        //roundResultP.innerHTML += '\n round number: '+ (index+1);
+        let roundResult = playRound(btnValue);
+        console.log(`round ${index+1} result: ${roundResult}`);
+        buff += `\n round ${index+1} result: ${roundResult}`;
+        roundResultP.innerHTML += `${roundResult}`;
+        console.log('==');
+        buff += '\n';
+        console.log('\n');
+        let score = scoreBoard(roundResult)
+        player1score += score[0];
+        player2score += score[1];
+        if (roundCount==5) {
+            playGame();
+        }
+    // }
+    // console.log(`player 1 score: ${player1score}, player 2 score: ${player2score}`)+ '\n';
+    // buff += `\n player 1 score: ${player1score}, player 2 score: ${player2score}`;
+    // board.textContent = buff;
+    // (player1score==player2score)?console.log('The game is draw'):(player1score>player2score)?console.log('Player 1 wins the game'):console.log('Player 2 wins the game');        
+}
+
+const board = document.querySelector('.board');
+let roundCount = 0;
+let player1score = 0; 
+let player2score = 0;
+let buff='';
+var buttons = document.querySelectorAll('button');
+const roundNumSpan = document.querySelectorAll('.roundNum');
+//console.log(roundNumSpan[0]);
+//console.log(roundNumSpan[1]);
+console.log(buttons);
+buttons.forEach(btn => btn.addEventListener('click',()=>{playGame(btn.value);})); 
+
+function playGame(btnValue){
+    if(roundCount<5){
+        console.log('user input: '+ btnValue);
+        roundNumSpan[0].innerText = roundCount+1;
+        roundNumSpan[1].innerText = roundCount+1;
+        roundCount +=1;
+        console.log('round count: '+ roundCount + " from play game");
+        game(btnValue);
+    }
+    else{
+        console.log('game over');
+        console.log(`player 1 score: ${player1score}, player 2 score: ${player2score}`)+ '\n';
+        buff += `\n player 1 score: ${player1score}, player 2 score: ${player2score}`;
+        board.innerHTML = buff;
+        (player1score==player2score)?console.log('The game is draw'):(player1score>player2score)?console.log('Player 1 wins the game'):console.log('Player 2 wins the game');        
+        buttons.forEach(btn => btn.removeEventListener('click',()=>{})); 
+    }
+}
+
+//console.log('lets play rock paper scissors');
+//game();
+// var buttons = document.querySelectorAll('button');
+// console.log(buttons);
+// buttons.forEach(btn => btn.addEventListener('click',()=>{game(btn.value);}));
+
+//CALL THE GAME FUNCTION ONLY WHEN THE COUNT OF ROUND IS LESS THEN OR EQUAL TO 5
