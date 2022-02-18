@@ -3,13 +3,13 @@ function scoreBoard(rResult){
     let p1score = 0;
     let p2score = 0;
     switch (rResult) {
-        case 'Player 1 wins':
+        case 'Player 1 wins!':
             p1score += 1;
             break;
         case 'Player 2 wins!':
             p2score +=1;
             break;
-        case 'It is a draw':
+        case 'It is a draw!':
             p1score += 0.5;
             p2score += 0.5;
             break;
@@ -29,13 +29,13 @@ function getResult(p1Choice, p2Choice) {
         case 'rock':
         switch (p2Choice) {
             case 'rock':
-                return 'It is a draw';
+                return 'It is a draw!';
                 break;
             case 'paper':
                 return 'Player 2 wins!';
                 break;
             case 'scissors':
-                return 'Player 1 wins';
+                return 'Player 1 wins!';
                 break;
             default:
                 break;
@@ -44,10 +44,10 @@ function getResult(p1Choice, p2Choice) {
         case 'paper':
         switch (p2Choice) {
             case 'rock':
-                return 'Player 1 wins';
+                return 'Player 1 wins!';
                 break;
             case 'paper':
-                return 'It is a draw';
+                return 'It is a draw!';
                 break;
             case 'scissors':
                 return 'Player 2 wins!';
@@ -62,10 +62,10 @@ function getResult(p1Choice, p2Choice) {
                 return 'Player 2 wins!';
                 break;
             case 'paper':
-                return 'Player 1 wins';
+                return 'Player 1 wins!';
                 break;
             case 'scissors':
-                return 'It is a draw';
+                return 'It is a draw!';
                 break;
             default:
             break;
@@ -131,14 +131,14 @@ function game(btnValue){
     let index=roundCount-1;
     // for(let index=0; index<1; index++){
         console.log('round number: '+ (index+1));
-        buff += '\n round number: '+ (index+1);
+        //buff += '\n round number: '+ (index+1);
         //roundResultP.innerHTML += '\n round number: '+ (index+1);
         let roundResult = playRound(btnValue);
         console.log(`round ${index+1} result: ${roundResult}`);
-        buff += `\n round ${index+1} result: ${roundResult}`;
+        buff += `<p>round ${index+1} result: ${roundResult}</p>`;
         roundResultP.innerHTML += `${roundResult}`;
         console.log('==');
-        buff += '\n';
+        //buff += '\n';
         console.log('\n');
         let score = scoreBoard(roundResult)
         player1score += score[0];
@@ -153,6 +153,8 @@ function game(btnValue){
     // (player1score==player2score)?console.log('The game is draw'):(player1score>player2score)?console.log('Player 1 wins the game'):console.log('Player 2 wins the game');        
 }
 
+const containerdiv = document.querySelector('.container');
+const scoreBoarddiv = document.querySelector('.scoreBoard');
 const board = document.querySelector('.board');
 let roundCount = 0;
 let player1score = 0; 
@@ -173,14 +175,32 @@ function playGame(btnValue){
         roundCount +=1;
         console.log('round count: '+ roundCount + " from play game");
         game(btnValue);
+        board.innerHTML = buff;
     }
     else{
+        containerdiv.removeChild(document.querySelector('.round1'));
+        containerdiv.removeChild(document.querySelector('.userInput'));
+        containerdiv.removeChild(document.querySelector('.choices'));
+        scoreBoarddiv.removeChild(document.querySelector('.roundResult'));
+        scoreBoarddiv.removeChild(document.querySelector('.round2'));
+        //container userInput
+        //container choices
+        //scoreBoard roundNum
+        //scoreBoard roundResult
         console.log('game over');
         console.log(`player 1 score: ${player1score}, player 2 score: ${player2score}`)+ '\n';
         buff += `\n player 1 score: ${player1score}, player 2 score: ${player2score}`;
+        //(player1score==player2score)?console.log('The game is draw'):(player1score>player2score)?console.log('Player 1 wins the game'):console.log('Player 2 wins the game');        
+        (player1score==player2score)?buff+='<p>The game is draw</p>':(player1score>player2score)?buff+='<p>Player 1 wins the game</p>':buff+='<p>Player 2 wins the game</p>';
         board.innerHTML = buff;
-        (player1score==player2score)?console.log('The game is draw'):(player1score>player2score)?console.log('Player 1 wins the game'):console.log('Player 2 wins the game');        
         buttons.forEach(btn => btn.removeEventListener('click',()=>{})); 
+        btn = document.createElement('button');
+        btn.innerText = 'Play again';
+        btn.addEventListener('click',()=>{location.reload()});
+        div = document.createElement('div');
+        div.appendChild(btn);
+        scoreBoarddiv.appendChild(div);
+
     }
 }
 
